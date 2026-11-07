@@ -40,6 +40,8 @@ THEMES = {
     "light": dict(bg="#ffffff", border="#d0d7de", title="#0f5c63", text="#1f2328", muted="#59636e", track="#eaeef2"),
     "dark": dict(bg="#0d1117", border="#30363d", title="#5eead4", text="#e6edf3", muted="#9198a1", track="#21262d"),
 }
+# Rendered report output (knitted R Markdown, exported notebooks) rather than code.
+IGNORED_LANGS = {"HTML", "CSS"}
 FONT = "-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif"
 
 
@@ -63,6 +65,8 @@ def summarize(user, login):
     for r in repos:
         for e in r["languages"]["edges"]:
             name, color = e["node"]["name"], e["node"]["color"] or "#8b949e"
+            if name in IGNORED_LANGS:
+                continue
             size, _ = langs.get(name, (0, color))
             langs[name] = (size + e["size"], color)
     c = user["contributionsCollection"]
