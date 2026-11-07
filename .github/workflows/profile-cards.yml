@@ -1,4 +1,4 @@
-name: Profile summary cards
+name: Profile stats cards
 
 on:
   schedule:
@@ -12,8 +12,16 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: vn7n24fb/github-profile-summary-cards@release
+      - uses: actions/checkout@v4
+
+      - name: Generate cards
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          USERNAME: ${{ github.repository_owner }}
+        run: python3 scripts/stats.py "${{ github.repository_owner }}" assets/stats
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/stats
+          git diff --cached --quiet || (git commit -m "Update stats cards" && git push)
