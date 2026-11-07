@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" font-family="-apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1f3a"/>
+      <stop offset="0.55" stop-color="#123a5c"/>
+      <stop offset="1" stop-color="#0f5c63"/>
+    </linearGradient>
+    <linearGradient id="armA" x1="0" x2="1">
+      <stop offset="0" stop-color="#5eead4"/>
+      <stop offset="1" stop-color="#2dd4bf"/>
+    </linearGradient>
+    <linearGradient id="armB" x1="0" x2="1">
+      <stop offset="0" stop-color="#fbbf24"/>
+      <stop offset="1" stop-color="#f59e0b"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#ffffff" stroke-opacity="0.05"/>
+    </pattern>
+    <clipPath id="type1"><rect x="60" y="178" height="44" width="0">
+      <animate attributeName="width" values="0;600;600;0;0" keyTimes="0;0.12;0.22;0.25;1" dur="16s" repeatCount="indefinite"/></rect></clipPath>
+    <clipPath id="type2"><rect x="60" y="178" height="44" width="0">
+      <animate attributeName="width" values="0;0;600;600;0;0" keyTimes="0;0.25;0.37;0.47;0.5;1" dur="16s" repeatCount="indefinite"/></rect></clipPath>
+    <clipPath id="type3"><rect x="60" y="178" height="44" width="0">
+      <animate attributeName="width" values="0;0;600;600;0;0" keyTimes="0;0.5;0.62;0.72;0.75;1" dur="16s" repeatCount="indefinite"/></rect></clipPath>
+    <clipPath id="type4"><rect x="60" y="178" height="44" width="0">
+      <animate attributeName="width" values="0;0;600;600;0" keyTimes="0;0.75;0.87;0.97;1" dur="16s" repeatCount="indefinite"/></rect></clipPath>
+  </defs>
+
+  <rect width="1200" height="320" rx="18" fill="url(#bg)"/>
+  <rect width="1200" height="320" rx="18" fill="url(#grid)"/>
+
+  <!-- Left: name and rotating subtitle -->
+  <text x="60" y="130" fill="#ffffff" font-size="64" font-weight="700" letter-spacing="-1">Chang Su</text>
+  <text x="62" y="166" fill="#9fb7cc" font-size="18" letter-spacing="1.5">BIOSTATISTICIAN · M.S. APPLIED BIOSTATISTICS</text>
+
+  <g font-size="24" fill="#5eead4" font-family="'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace">
+    <text x="60" y="210" fill="#5eead4" opacity="0.9">&gt;</text>
+    <text x="84" y="210" clip-path="url(#type1)">Clinical trials &amp; sample size</text>
+    <text x="84" y="210" clip-path="url(#type2)">Survival analysis · KM · Cox</text>
+    <text x="84" y="210" clip-path="url(#type3)">Causal inference · IPW · AIPW</text>
+    <text x="84" y="210" clip-path="url(#type4)">Network meta-analysis · R Shiny</text>
+  </g>
+
+  <text x="60" y="268" fill="#9fb7cc" font-size="17">Turning biomedical data into publication-ready results</text>
+
+  <!-- Right: animated Kaplan-Meier plot -->
+  <g transform="translate(740,52)">
+    <rect x="0" y="0" width="400" height="216" rx="12" fill="#ffffff" fill-opacity="0.04" stroke="#ffffff" stroke-opacity="0.12"/>
+    <g stroke="#ffffff" stroke-opacity="0.35" stroke-width="1.2">
+      <line x1="40" y1="24" x2="40" y2="180"/>
+      <line x1="40" y1="180" x2="380" y2="180"/>
+    </g>
+    <g fill="#9fb7cc" font-size="11">
+      <text x="34" y="28" text-anchor="end">1.0</text>
+      <text x="34" y="104" text-anchor="end">0.5</text>
+      <text x="34" y="184" text-anchor="end">0</text>
+      <text x="210" y="202" text-anchor="middle">Time</text>
+    </g>
+
+    <!-- CI band for arm A -->
+    <path d="M40 24 H90 V30 H140 V40 H185 V50 H230 V58 H280 V66 H330 V74 H380 V100 H330 V92 H280 V84 H230 V76 H185 V66 H140 V54 H90 V40 H40 Z"
+          fill="#2dd4bf" fill-opacity="0.12">
+      <animate attributeName="fill-opacity" values="0;0;0.12;0.12;0" keyTimes="0;0.35;0.5;0.92;1" dur="8s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Arm A -->
+    <path d="M40 24 H90 V35 H140 V47 H185 V58 H230 V67 H280 V75 H330 V83 H380"
+          fill="none" stroke="url(#armA)" stroke-width="3" stroke-linejoin="round"
+          stroke-dasharray="600" stroke-dashoffset="600">
+      <animate attributeName="stroke-dashoffset" values="600;0;0;600" keyTimes="0;0.4;0.92;1" dur="8s" repeatCount="indefinite"/>
+    </path>
+    <!-- Arm B -->
+    <path d="M40 24 H70 V44 H110 V66 H150 V86 H195 V104 H240 V118 H290 V130 H340 V140 H380"
+          fill="none" stroke="url(#armB)" stroke-width="3" stroke-linejoin="round"
+          stroke-dasharray="650" stroke-dashoffset="650">
+      <animate attributeName="stroke-dashoffset" values="650;650;0;0;650" keyTimes="0;0.1;0.5;0.92;1" dur="8s" repeatCount="indefinite"/>
+    </path>
+
+    <!-- Censor ticks -->
+    <g stroke-width="2" opacity="0">
+      <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.45;0.55;0.92;1" dur="8s" repeatCount="indefinite"/>
+      <g stroke="#5eead4"><line x1="115" y1="31" x2="115" y2="39"/><line x1="205" y1="54" x2="205" y2="62"/><line x1="305" y1="71" x2="305" y2="79"/></g>
+      <g stroke="#fbbf24"><line x1="130" y1="62" x2="130" y2="70"/><line x1="265" y1="114" x2="265" y2="122"/><line x1="360" y1="136" x2="360" y2="144"/></g>
+    </g>
+
+    <!-- Legend -->
+    <g font-size="11" fill="#d6e2ec">
+      <rect x="56" y="148" width="12" height="3" fill="#2dd4bf"/><text x="74" y="153">Treatment</text>
+      <rect x="56" y="164" width="12" height="3" fill="#f59e0b"/><text x="74" y="169">Control</text>
+    </g>
+  </g>
+</svg>
